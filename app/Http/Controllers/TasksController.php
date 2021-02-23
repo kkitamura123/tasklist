@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Task;
+
 class TasksController extends Controller
 {
     /**
@@ -22,7 +24,7 @@ class TasksController extends Controller
             'tasks' => $tasks,
         ]);
     }
-}
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,7 +34,7 @@ class TasksController extends Controller
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
-        $task = new Tasks;
+        $task = new Task;
         //メッセージ作成ビューを表示
         return view('tasks.create',[
             'task' => $task
@@ -54,7 +56,7 @@ class TasksController extends Controller
         $task->save();
         
         // トップページへリダイレクトさせる
-        return redirect('/')
+        return redirect('/');
     }
 
     /**
@@ -90,7 +92,7 @@ class TasksController extends Controller
         //メッセージ編集ビューでそれを表示
         return view('tasks.edit',[
             'task' => $task,
-            ])
+            ]);
     }
 
     /**
