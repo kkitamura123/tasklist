@@ -11,8 +11,8 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
+     * The attributes属性 that are mass質量 assignable割当て可能.
+     * 一括割り当て可能な属性
      * @var array
      */
     protected $fillable = [
@@ -21,8 +21,9 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be hidden for arrays.
-     *
+     * 
      * @var array
+     * $hidden(隠す) Passwordなど隠したいカラム
      */
     protected $hidden = [
         'password', 'remember_token',

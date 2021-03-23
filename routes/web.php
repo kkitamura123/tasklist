@@ -33,5 +33,16 @@ Route::get('/', function () {
 // // edit: 更新用のフォームページ
 // Route::get('tasks/{id}/edit', 'TasksController@edit')->name('tasks.edit');
 
+
+//トップページ'/'をTasksControllerのindexアクションに設定する内容
+//indexアクションは'/'にアクセスした時/Tasksにアクセスした両方で同じルーティングが設定？
 Route::get('/', 'TasksController@index');
+//7つの基本ルーティングの省略形
 Route::resource('tasks', 'TasksController');
+
+//認証はLoginControllerが担当
+//LoginController.php内のuse AuthenticatesUsers;はトレイトを使っている
+//Routerで設定したshowLoginFormやloginアクションはそこに定義される
+Route::get('login','Auth\LoginController@showLoginForm')->name('login');
+Route::post('login','Auth\LoginController@login')->name('login.post');
+Route::get('login','Auth\LoginController@logout')->name('logout.get');
